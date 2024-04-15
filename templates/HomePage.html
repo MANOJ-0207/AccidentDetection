@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accident Detection</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename='resources/images/AccidentFavIcon.png') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/home.css') }}"
+    />
+  </head>
+
+  <body>
+    <div class="top">
+      <h1>Accident Detection And Alerting System</h1>
+    </div>
+    <div class="wrapper">
+      <div class="title-text">
+        <div class="title cctv">
+          CCTV Camera <i class="fa-solid fa-tower-broadcast"></i>
+        </div>
+        <div class="title dashCam">Dash Camera</div>
+      </div>
+      <div class="form-container">
+        <div class="slide-controls">
+          <input type="radio" name="slide" id="cctv" checked />
+          <input type="radio" name="slide" id="dashCam" />
+          <label for="cctv" class="slide cctv"> Survillance </label>
+          <label for="dashCam" class="slide dashCam"> Dash Cam </label>
+          <div class="slider-tab"></div>
+        </div>
+        <div class="form-inner">
+          <form
+            action="/cctv"
+            class="cctv"
+            method="post"
+            onsubmit="return formValidation()"
+          >
+            <div class="field">
+              <select id="runMode" name="runMode">
+                <option value="cpu">CPU</option>
+                <option value="cuda">Cuda (GPU)</option>
+              </select>
+            </div>
+            <div class="inputTypeField">
+              <select id="inputType" name="inputType">
+                <option value="image">Image</option>
+                <option value="video">Video</option>
+                <option value="videos">Video Folder</option>
+              </select>
+              <label for="fileInputCCTV" class="fileInputLabel">
+                <button
+                  type="button"
+                  class="btn btn-info"
+                  id="fileInputBtnCCTV"
+                >
+                  Select
+                </button>
+                <input type="file" id="fileInputCCTV" name="fileInputCCTV" />
+              </label>
+            </div>
+            <div class="field btn">
+              <div class="btn-layer"></div>
+              <input type="submit" value="Initiate Checking" />
+            </div>
+            <div class="dashCam-link"></div>
+          </form>
+          <form class="dashCam" action="/dashCam" method="post">
+            <div class="field">
+              <select id="runMode" name="runMode">
+                <option value="cpu">CPU</option>
+                <option value="cuda">Cuda (GPU)</option>
+              </select>
+            </div>
+            <div class="field">
+              <select id="inputType" name="inputType">
+                <option value="image">Image</option>
+                <option value="video">Video</option>
+                <option value="videos">Video Folder</option>
+              </select>
+            </div>
+            <div class="field btn">
+              <div class="btn-layer"></div>
+              <input type="submit" value="Initiate Checking" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="{{ url_for('static', filename='scripts/Home.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!-- ProgressPage.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Output</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename='resources/images/AccidentFavIcon.png') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/image.css') }}"
+    />
+  </head>
+  <body>
+    <div class="top">
+      <a href="/" type="button" class="btn btn-secondary backButton">Back</a>
+      <h1>Image Output</h1>
+    </div>
+    <div class="spinner-border text-light" id="customSpinner" role="status">
+      <span class="visually-hidden"></span>
+    </div>
+    <div id="output" class="row">
+      <div class=" imageBox">
+        <h3>Input Image</h3>
+        <img id="inputImage" src="{{ url_for('static', filename='resources/images/Input_Images/' ~ imageUrl) }}" alt="Image 1" />
+      </div>
+      <div class="imageBox">
+        <h3>Output Image</h3>
+        <img id="outputImage" src="{{ url_for('static', filename='resources/images/Output_Images/' ~ imageUrl) }}" alt="Image 2" />
+      </div>
+    </div>
+    <script src="{{ url_for('static', filename='scripts/Image.js') }}"></script>
+  </body>
+</html>

@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+@font-face {
+  font-family: 'Font Awesome 5 Free';
+  font-style: normal;
+  font-weight: 400;
+  font-display: auto;
+  src: url('../fonts/fontawesome-webfont.woff2') format('woff2');
+}
+
+body {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    place-items: center;
+    background: -webkit-linear-gradient(left, #003366, #004080, #0059b3, #0073e6);
+}
+
+.backButton
+{
+  position: fixed;
+  top: 7%;
+  left: 4%;
+  z-index: 9999; /* Ensure it's on top of other content */
+}
+
+.completionText
+{
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 2%;
+}
+.container
+{
+  padding-top:7%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#outputButton
+{
+  display:none;
+  margin-top: 20%;;
+}
+
+#outputContainer {
+  width: 100%; 
+  height: 400px;
+  margin-top: 20%; 
+  padding: 10%;
+  margin-bottom: 10%;
+  display: none;
+}
+
+#count
+{
+  display: inline-block;
+}
+#detected
+{
+  display: inline-block;
+  color: #4caf50;
+}
+#inputVideo
+{
+    width:100%;
+    border-radius: 10px;
+}
+
+#outputVideo
+{
+  width:100%;
+  border-radius: 10px;
+}
+.infoBox
+{
+    padding: 20px;
+    flex-basis: 45%;
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+
+#positiveResult, #alertResult
+{
+  display: none;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  text-align: center;
+}
+
+#alertResult
+{
+  display: none;
+}
+.top
+{
+    margin-top: 3%;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 0% 10%;
+}
+.progressBar 
+{
+    width: 100%;
+    border-radius: 10px;
+    background-color: #f3f3f3;
+    border: 1px solid #ddd;
+    height: 30px;
+    position: relative;
+    margin-top: 20px;
+  }
+
+  .progress {
+    width: 0%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: #4caf50;
+    position: absolute;
+  }
+
+  #progressText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+  }
+  .resultHeading
+  {
+    margin-bottom: 20px;
+  }
+  .videoBox
+  {
+    text-align: center;
+    flex-basis: 45%;
+  }
+
+@media(max-width:700px)
+{
+  .container
+  {
+    display: inline-block;
+    padding-left: 17%;
+  }
+  .videoBox
+  {
+    width: 80%;
+    margin-bottom: 20%;
+  }
+  .infoBox
+  {
+    width:80%;
+    background-color: #fff;
+    min-height: 300px;
+  }
+}

@@ -1,0 +1,10 @@
+*.zip
+.kaggle
+dataset
+env
+*.pyc
+test_dataset
+# *.mp4
+# *.jpg
+*.torch
+test2.py

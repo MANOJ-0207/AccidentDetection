@@ -1,0 +1,72 @@
+<!-- ProgressPage.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Progress Page</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename='resources/images/AccidentFavIcon.png') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/progressCCTV.css') }}"
+    />
+  </head>
+  <body>
+    <div class="top">
+      <a href="/" type="button" class="btn btn-secondary backButton">Back</a>
+      <h1>Video Output</h1>
+    </div>
+
+    <div class="container">
+      <div class="videoBox">
+        <video id="inputVideo" controls>
+          <source id="videoSource" src= "{{ url_for('static', filename='resources/videos/Accident_Test_Videos/'~ videoUrl) }}" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div class="progressBar" id="progressBar">
+          <div class="progress" id="progress"></div>
+          <span id="progressText">0%</span>
+        </div>
+      </div>
+      <div class="infoBox">
+        <h2 class="resultHeading">Results</h2>
+        <h5>
+          Status :
+          <div id="detected">No Accidents</div>
+        </h5>
+        <h5>
+          Video Clips Sent :
+          <div id="count">0</div>
+        </h5>
+        <a
+          href="#outputVideo"
+          type="button"
+          class="btn btn-info"
+          id="outputButton"
+          >Processed Video</a
+        >
+        <div id="positiveResult">No accidents Detected</div>
+        <div id="alertResult">
+          Accidents detected and <span id="countResult">0</span> alerts sent..
+        </div>
+      </div>
+    </div>
+
+    <div id="outputContainer">
+      <video id="outputVideo" class="outputVideo" controls width = "640px" height = "360px">
+        <source id="outputVideoSource" src="{{ url_for('static', filename='resources/videos/Output_Videos/Singly_Processed_Videos/BrowserVideos/Browser'~ videoUrl) }}" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <script src="{{ url_for('static', filename='scripts/cctvProgress.js') }}"></script>
+  </body>
+</html>

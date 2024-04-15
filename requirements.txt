@@ -1,0 +1,10 @@
+kaggle
+matplotlib
+numpy
+opencv_python
+opencv_python_headless
+protobuf
+pycocotools
+torch
+torchvision
+tqdm==4.64.1
