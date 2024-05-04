@@ -117,12 +117,16 @@ def cctv():
     runMode = request.form['runMode']
     inputType = request.form['inputType']
     fileName = request.form['fileInputCCTV']
-    arguments = [runMode, inputType, fileName]
+    if(inputType == "videos"):
+        fileName = "noFile"
+    arguments = [runMode, inputType, fileName]    
     process = subprocess.Popen(['python', 'test.py']+ arguments, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)
     if(inputType == "image"):
         return redirect(url_for('image'))
-    else:
+    elif(inputType == "video"):
         return redirect(url_for('videoProgress'))
+    else:
+        return redirect(url_for('folderOutput'))
 
 
 
