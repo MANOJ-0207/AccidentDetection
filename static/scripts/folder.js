@@ -18,14 +18,12 @@ function fetchProgress()
       .then((data) => 
       {
         console.log(data);
-        if (count == 0) {
-          count = data.count;
-          if (count) 
-          {
-            countSpan.innerHTML = count;
-            detectedDiv.innerText = "Accident Detected";
-            detectedDiv.style.color = "Red";
-          }
+        count = data.count;
+        if (count) 
+        {
+          countSpan.innerHTML = count;
+          detectedDiv.innerText = "Accident Detected";
+          detectedDiv.style.color = "Red";
         }
         if (data.status == "complete") 
         {
