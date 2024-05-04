@@ -63,7 +63,16 @@ def generate_progress():
                     previousProgress = percentage
                     return jsonify({"percentage": percentage, "count": count })
     return jsonify({"percentage": previousProgress, "count" : count})
-    
+
+@app.route("/getCompletionStatus", methods=['GET'])
+def getProcessStatus():
+    global process
+    count = len(os.listdir("TelegramAlertVideos_CCTV"))
+    if(process is None):
+        return jsonify({"status" : "none","count" : count})
+    elif(process.poll() is None):
+        return jsonify({"status" : "running", "count" : count})
+    return jsonify({"status" : "complete", "count" : count})    
 
 @app.route("/image")
 def image():
@@ -87,6 +96,10 @@ def imageProgress():
 def videoProgress():
     global fileName
     return render_template('ProgressPageCCTV.html' , videoUrl = fileName)
+
+@app.route("/folderOutput" )
+def folderOutput():
+    return render_template('FolderProgress.html')
 
 @app.route("/")
 def home_page():
