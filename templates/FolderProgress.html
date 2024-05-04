@@ -1,0 +1,50 @@
+<!-- ProgressPage.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Progress Page</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename='resources/images/AccidentFavIcon.png') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/folder.css') }}"
+    />
+  </head>
+  <body>
+    <div class="top">
+      <a href="/" type="button" class="btn btn-secondary backButton">Back</a>
+      <h1>Folder  Processing</h1>
+    </div>
+    <div class="infoBox">
+      <h2 class="resultHeading">Results</h2>
+      <h5>
+        Status :
+        <div id="detected">No Accidents</div>
+      </h5>
+      <h5>
+        Video Clips Sent :
+        <div id="count">0</div>
+      </h5>
+      <h5>
+        Process Status :
+        <div id="processStatus">Running... <div class="spinner-border text-primary" id="customSpinner" role="status"></div></div>
+      </h5>
+      <div id="result">
+        All the processed Videos will be found in Output Folder...
+      </div>
+      
+    </div>
+  </div>
+    <script src="{{ url_for('static', filename='scripts/folder.js') }}"></script>
+  </body>
+</html>

@@ -34,6 +34,7 @@ def getConversionStatus():
     else:
         return jsonify({"status" : "pending"})
 
+
 @app.route("/getProgressPercentage" , methods=['GET'])
 def generate_progress():
     global process
@@ -57,10 +58,21 @@ def generate_progress():
     return jsonify({"percentage": previousProgress, "count" : count})
     
 
+@app.route("/getCompletionStatus", methods=['GET'])
+def getProcessStatus():
+    global process
+    count = len(os.listdir("TelegramAlertVideos_CCTV"))
+    if(process is None):
+        return jsonify({"status" : "none","count" : count})
+    elif(process.poll() is None):
+        return jsonify({"status" : "running", "count" : count})
+    return jsonify({"status" : "complete", "count" : count})
+
 @app.route("/image")
 def image():
     global fileName
-    return render_template('ImageOutput.html' , imageUrl = fileName)           
+    return render_template('ImageOutput.html' , imageUrl = fileName) 
+     
 
 @app.route("/imageProgress")
 def imageProgress():
@@ -80,6 +92,10 @@ def videoProgress():
     global fileName
     return render_template('ProgressPageCCTV.html' , videoUrl = fileName)
 
+@app.route("/folderOutput" )
+def folderOutput():
+    return render_template('FolderProgress.html')
+
 @app.route("/")
 def home_page():
     clear_folder("TelegramAlertVideos_CCTV")
@@ -96,13 +112,16 @@ def cctv():
     runMode = request.form['runMode']
     inputType = request.form['inputType']
     fileName = request.form['fileInputCCTV']
-    arguments = [runMode, inputType, fileName]
+    if(inputType == "videos"):
+        fileName = "noFile"
+    arguments = [runMode, inputType, fileName]    
     process = subprocess.Popen(['python', 'test.py']+ arguments, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)
     if(inputType == "image"):
         return redirect(url_for('image'))
-    else:
+    elif(inputType == "video"):
         return redirect(url_for('videoProgress'))
-
+    else:
+        return redirect(url_for('folderOutput'))
 
 
 
