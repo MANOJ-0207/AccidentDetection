@@ -38,7 +38,7 @@ def getConversionStatus():
 @app.route("/getProgressPercentage" , methods=['GET'])
 def generate_progress():
     global process
-    count = len(os.listdir("TelegramAlertVideos_CCTV"))
+    count = len(os.listdir("TelegramAlertVideos_CCTV")) - 1
     if(process is not None):
         if(process.poll()):
             return jsonify({"percentage": "100%", "count" : count})
@@ -61,7 +61,7 @@ def generate_progress():
 @app.route("/getCompletionStatus", methods=['GET'])
 def getProcessStatus():
     global process
-    count = len(os.listdir("TelegramAlertVideos_CCTV"))
+    count = len(os.listdir("TelegramAlertVideos_CCTV")) -1 
     if(process is None):
         return jsonify({"status" : "none","count" : count})
     elif(process.poll() is None):
