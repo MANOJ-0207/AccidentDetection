@@ -1,5 +1,5 @@
 var detectedDiv = document.getElementById("detected");
-var countSpan = document.getElementById("countResult");
+var countDiv = document.getElementById("count");
 var intervalId = setInterval(fetchProgress, 2000);
 
 function displayHiddenInfo(count) 
@@ -21,7 +21,7 @@ function fetchProgress()
         count = data.count;
         if (count) 
         {
-          countSpan.innerHTML = count;
+          countDiv.innerHTML = count;
           detectedDiv.innerText = "Accident Detected";
           detectedDiv.style.color = "Red";
         }
