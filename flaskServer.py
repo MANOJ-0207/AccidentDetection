@@ -110,7 +110,7 @@ def cctv():
             process.kill()
     global fileName
     runMode = request.form['runMode']
-    inputType = request.form['inputType']
+    inputType = request.form['inputTypeCCTV']
     fileName = request.form['fileInputCCTV']
     if(inputType == "videos"):
         fileName = "noFile"

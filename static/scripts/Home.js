@@ -41,7 +41,7 @@ document.getElementById('fileInputBtnCCTV').addEventListener('click', function()
 function formValidation()
 {
   var fileName = document.getElementById("fileInputCCTV").value;
-  var inputType = document.getElementById('inputTypeField').value;
+  var inputType = document.getElementById('inputTypeCCTV').value;
   if(fileName == '' && inputType != 'videos')
   {
     Swal.fire({
